@@ -4,33 +4,33 @@ import ListComponent from './ListComponent/ListComponent.jsx'
 import ViewComponent from './ViewComponent/ViewComponent.jsx'
 
 export default class App extends React.Component {
+	constructor(props) {
+		super(props)
 
+		this.state = {
+			mode: 'nodes'
+		}
+	}
 	render() {
 		return (
 			<div className='mainDiv'>
 				<NavBarComponent 
-					onNodesClick={this.nodesButtonClicked} 
-					onAppsClick={this.applicationsButtonClicked}
-					onContainersClick={this.containersButtonClicked} 
+					onNodesClick={this.changeState.bind(this,'nodes')} 
+					onAppsClick={this.changeState.bind(this, 'applications')}
+					onContainersClick={this.changeState.bind(this, 'containers')} 
 				/>
-				<ListComponent />
+				<ListComponent mode={this.state.mode} />
 				<ViewComponent />
 			</div>
 		)
 	}
 
-	//Nodes button clicked function
-	nodesButtonClicked() {
-		console.log("clicked node button")
+	//Change application state
+	changeState(mode) {
+		//change the state
+		this.setState({mode})
+
+		//
 	}
 
-	//Applications button clicked function
-	applicationsButtonClicked() {
-		console.log("clicked application button")
-	}
-
-	//Containers button clicked function
-	containersButtonClicked() {
-		console.log("clicked containers button")
-	}
 }
