@@ -4,6 +4,8 @@ A UI for the kDaemon API
 
 Node/NPM required.
 
+Built using React + Alt(Flux) + Webpack + Babel to try making modern UI possible.
+
 To play with it:
 
 ```
