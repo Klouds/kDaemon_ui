@@ -1,51 +1,80 @@
 body {
-	background: #E9D8C0;
-	font-family: 		sans-serif;
+	background: 					#E9D8C0;
+	font-family: 					sans-serif;
+}
+
+.mainDiv {
+	position:						relative;
+	margin:							auto;
+	line-height: 					1em;
+	width: 							65.5em;
 }
 
 .navBar {
-	float:top;
-	margin-top: 0.5em;
-	margin-left: 0.5em;
-	background-color: #16C2E5;
-	border-radius: 0.5em;
-	width: 98%;
-	height: 2.5em;
+
+	float:							top;
+	margin-top: 					0.5em;
+	background-color: 				#16C2E5;
+	border-radius: 					0.5em;
+	border-style: 					dotted;
+	border-width: 					0.1px;
+	border-color:					#1C21EC;
+	width: 							99.8%;
+	height: 						2.5em;
 }
 
 .navBar-logo {
-	float:left;
-	margin-top: 0.25em;
-	margin-left: 0.25em;
-	background-image: url('./images/logo.png');
-	background-size:1.95em 1.95em;
-	background-repeat: no-repeat;
-	height:100%;
-	width:100%;
 
-
-	padding-left: 1em;
+	float:							left;
+	margin-top: 					0.25em;
+	margin-left: 					0.25em;
+	background-image: 				url('./images/logo.png');
+	background-size:				1.95em 1.95em;
+	background-repeat: 				no-repeat;
+	height:							100%;
+	width:							100%;
+	padding-left: 					1em;
 }
 
 .listComponent {
-	float:left;
-	margin-left: 0.5em;
-	background-color: lightgrey;
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
-	height:25em;
-	width:23.13333%;
+
+	float:							left;
+	background-color: 				lightgrey;
+	border-style: 					none dotted dotted dotted;
+	border-color:					#1C21EC;
+	border-width: 					0.1px;
+	border-top-left-radius: 		0.5em;
+	border-top-right-radius: 		0.5em;
+	height:							45em;
+	width:							10em;
 }
 
-.list-header {
-	margin-top: 0;
-	float:top;
-	overflow: auto;
-	padding: ;
-	color:#efefef;
-	background-color: #16C2E5;
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
-	text-align: center;
-	font-size: 100%;
+.header {
+
+	margin-top: 					0;
+	float:							bottom;
+	overflow: 						auto;
+	border-style: 					none none dotted none;
+	border-width: 					0.1px;
+	border-color:					#1C21EC;
+	color:							#efefef;
+	background-color: 				#16C2E5;
+	border-top-left-radius: 		0.5em;
+	border-top-right-radius: 		0.5em;
+	text-align: 					center;
+	font-size: 						small;
+}
+
+.viewComponent {
+
+	float:							left;
+	margin-left: 					0.25em;
+	background-color: 				lightgrey;
+	border-style: 					none dotted dotted dotted;
+	border-color:					#1C21EC;
+	border-width: 					0.1px;
+	border-top-left-radius: 		0.5em;
+	border-top-right-radius: 		0.5em;
+	height:							45em;
+	width:							55em;
 }

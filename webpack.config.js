@@ -47,7 +47,7 @@ const common = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: 'node_modules/html-webpack-template/index.html',
-			title: 'Let\'s take some notes',
+			title: 'kDaemon',
 			appMountId: 'app',
 			inject: false
 		})

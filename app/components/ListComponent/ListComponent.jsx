@@ -11,7 +11,7 @@ export default class ListComponent extends React.Component {
 
 	renderListComponent() {
 		return (
-			<h1 className='list-header'> List Name </h1>
+			<h1 className='header'> List Name </h1>
 		)
 	}
 }
