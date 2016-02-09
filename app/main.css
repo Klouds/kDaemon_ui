@@ -1,0 +1,51 @@
+body {
+	background: #E9D8C0;
+	font-family: 		sans-serif;
+}
+
+.navBar {
+	float:top;
+	margin-top: 0.5em;
+	margin-left: 0.5em;
+	background-color: #16C2E5;
+	border-radius: 0.5em;
+	width: 98%;
+	height: 2.5em;
+}
+
+.navBar-logo {
+	float:left;
+	margin-top: 0.25em;
+	margin-left: 0.25em;
+	background-image: url('./images/logo.png');
+	background-size:1.95em 1.95em;
+	background-repeat: no-repeat;
+	height:100%;
+	width:100%;
+
+
+	padding-left: 1em;
+}
+
+.listComponent {
+	float:left;
+	margin-left: 0.5em;
+	background-color: lightgrey;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	height:25em;
+	width:23.13333%;
+}
+
+.list-header {
+	margin-top: 0;
+	float:top;
+	overflow: auto;
+	padding: ;
+	color:#efefef;
+	background-color: #16C2E5;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	text-align: center;
+	font-size: 100%;
+}
