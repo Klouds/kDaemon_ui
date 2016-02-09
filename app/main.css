@@ -21,7 +21,32 @@ body {
 	border-color:					#1C21EC;
 	width: 							99.8%;
 	height: 						2.5em;
+	text-align: 					center;
+
 }
+
+.navbar-element {
+	color:							white;
+	font-size: 						medium;
+	background-color: 				#00AAFF;
+	border-radius: 					2em;
+	border-style:					none;
+	float:							right;
+	margin-top:						0.5em;
+	margin-left: 					0.5em;
+	margin-right: 					0.5em;
+	height:							1.5em;
+	width:							8em;
+}
+
+.navbar-element:hover {
+	background-color: 				#0FFFF9;
+	color:							#555555;
+	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
+	transition: 					0.6s;
+}
+
+
 
 .navBar-logo {
 
@@ -31,14 +56,16 @@ body {
 	background-image: 				url('./images/logo.png');
 	background-size:				1.95em 1.95em;
 	background-repeat: 				no-repeat;
-	height:							100%;
-	width:							100%;
+	height:							2.25em;
+	width :							2em;
 	padding-left: 					1em;
+
 }
 
 .listComponent {
 
 	float:							left;
+	margin-top: 					0.15em;
 	background-color: 				lightgrey;
 	border-style: 					none dotted dotted dotted;
 	border-color:					#1C21EC;
@@ -69,6 +96,7 @@ body {
 
 	float:							left;
 	margin-left: 					0.25em;
+	margin-top: 					0.15em;
 	background-color: 				lightgrey;
 	border-style: 					none dotted dotted dotted;
 	border-color:					#1C21EC;

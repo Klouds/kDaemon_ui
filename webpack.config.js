@@ -39,7 +39,7 @@ const common = {
 				include: PATHS.app
 			},
 			{
-				test: /\.(png|jpg)$/,
+				test: /\.(png|jpg|ico)$/,
 				loader: 'url?limit=25000'
 			}
 		]
@@ -49,7 +49,8 @@ const common = {
 			template: 'node_modules/html-webpack-template/index.html',
 			title: 'kDaemon',
 			appMountId: 'app',
-			inject: false
+			inject: false,
+			favicon: './app/images/favicon.ico'
 		})
 	]
 }
