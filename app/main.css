@@ -46,6 +46,13 @@ body {
 	transition: 					0.6s;
 }
 
+.navbar-element:focus {
+	outline:none;
+	background-color: 				#0FFFF9;
+	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
+	color:							#555555;
+}
+
 
 
 .navBar-logo {

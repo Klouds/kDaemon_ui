@@ -10,14 +10,14 @@ export default class NavBarComponent extends React.Component {
 		let content = this.renderNavBar()
 
 		return (
-			<div>
+			<div className='navBar'>
 				{content}
 			</div>
 		)
 	}
 	renderNavBar() {
 		return ( 
-			<div className='navBar'>
+			<div >
 				<div className='navBar-logo' />
 				<button className='navbar-element'
 					onClick={ this.props.onNodesClick } > Nodes </button>

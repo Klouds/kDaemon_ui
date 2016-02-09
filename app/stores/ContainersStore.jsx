@@ -4,9 +4,9 @@ import ContainersActions from '../actions/ContainersActions'
 class ContainersStore {
 	
 	constructor() {
-		this.bindActions(LaneActions)
+		this.bindActions(ContainersActions)
 
-		this.lanes = []
+		this.containers = []
 	}
 	create() {
 

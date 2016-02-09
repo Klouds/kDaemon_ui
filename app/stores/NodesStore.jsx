@@ -4,9 +4,9 @@ import NodesActions from '../actions/NodesActions'
 class NodesStore {
 	
 	constructor() {
-		this.bindActions(LaneActions)
+		this.bindActions(NodesActions)
 
-		this.lanes = []
+		this.nodes = []
 	}
 	create() {
 

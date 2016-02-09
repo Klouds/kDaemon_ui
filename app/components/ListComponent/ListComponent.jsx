@@ -4,7 +4,7 @@ export default class ListComponent extends React.Component {
 	constructor(props) {
 		super(props)
 
-		const {mode} = this.props
+		const {nav, mode} = this.props
 
 	}
 	render() {
@@ -17,7 +17,10 @@ export default class ListComponent extends React.Component {
 
 	renderListComponent() {
 		return (
-			<h1 className='header'> List of {this.props.mode} </h1>
+			<div>
+				<h1 className='header'> List of {this.props.nav} </h1>
+				<span>{this.props.mode}'ing'</span>
+			</div>
 		)
 	}
 }
