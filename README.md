@@ -1,6 +1,8 @@
 # kDaemon UI
 
 A UI for the kDaemon API
+ 
+**Status: Visual / No functionality.**
 
 Node/NPM required.
 
