@@ -8,6 +8,8 @@ Node/NPM required.
 
 Built using React + Alt(Flux) + Webpack + Babel to try making modern UI possible.
 
+Working DockerFile inc.
+
 To play with it:
 
 ```
