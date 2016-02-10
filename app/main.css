@@ -4,44 +4,45 @@ body {
 }
 
 .mainDiv {
-	position:						relative;
-	margin:							auto;
+	position:					relative;
+	margin:						auto;
 	line-height: 					1em;
-	width: 							65.5em;
+	width: 						65.5em;
 }
 
 .navBar {
 
-	float:							top;
+	float:						top;
 	margin-top: 					0.5em;
 	background-color: 				#16C2E5;
 	border-radius: 					0.5em;
 	border-style: 					dotted;
 	border-width: 					0.1px;
 	border-color:					#1C21EC;
-	width: 							99.8%;
+	width: 						99.8%;
 	height: 						2.5em;
 	text-align: 					center;
 
 }
 
 .navbar-element {
-	color:							white;
-	font-size: 						medium;
+	color:						white;
+	font-size: 					medium;
 	background-color: 				#00AAFF;
 	border-radius: 					2em;
 	border-style:					none;
-	float:							right;
-	margin-top:						0.5em;
+	float:						right;
+	margin-top:					0.5em;
 	margin-left: 					0.5em;
 	margin-right: 					0.5em;
-	height:							1.5em;
-	width:							8em;
+	height:						1.5em;
+	width:						8em;
+	cursor:  					pointer;
 }
 
 .navbar-element:hover {
 	background-color: 				#0FFFF9;
-	color:							#555555;
+	color:						#555555;
 	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
 	transition: 					0.6s;
 }
@@ -50,66 +51,105 @@ body {
 	outline:none;
 	background-color: 				#0FFFF9;
 	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
-	color:							#555555;
+	color:						#555555;
 }
 
 
 
 .navBar-logo {
 
-	float:							left;
+	float:						left;
 	margin-top: 					0.25em;
 	margin-left: 					0.25em;
 	background-image: 				url('./images/logo.png');
 	background-size:				1.95em 1.95em;
 	background-repeat: 				no-repeat;
-	height:							2.25em;
-	width :							2em;
+	height:						2.25em;
+	width :						2em;
 	padding-left: 					1em;
 
 }
 
 .listComponent {
 
-	float:							left;
+	float:						left;
 	margin-top: 					0.15em;
 	background-color: 				lightgrey;
 	border-style: 					none dotted dotted dotted;
 	border-color:					#1C21EC;
 	border-width: 					0.1px;
-	border-top-left-radius: 		0.5em;
-	border-top-right-radius: 		0.5em;
-	height:							45em;
-	width:							10em;
+	border-top-left-radius: 				0.5em;
+	border-top-right-radius: 				0.5em;
+	height:						45em;
+	width:						10em;
+}
+
+.list {
+	padding:	 				0 0 0 0;
+	margin-top:					0;
+}
+
+.list-item {
+	list-style:  					none;
+	font-variant: 					small-caps;
+	background-color: 				#B9B8CE;
+	height: 						1.5em;
+	margin-left:					0.25em;
+	margin-right:					0.25em;
+	margin-bottom: 					0.25em;
+	padding-top:					0.25em;
+	text-align: 					center;
+
+
+	-moz-user-select: 				none;
+ 	-khtml-user-select: 				none;
+  	-webkit-user-select: 				none;
+	-ms-user-select: 				none;
+	user-select: 					none;
+	cursor: 						pointer;
+}
+
+.list-item:hover {
+	background-color: 				#0FFFF9;
+	color:						#555555;
+	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
+	transition: 					0.6s;
+}
+
+.list-item:focus {
+	background-color: 				#0FFFF9;
+	color:						#555555;
+	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
+	transition: 					0.6s;
 }
 
 .header {
 
 	margin-top: 					0;
-	float:							bottom;
-	overflow: 						auto;
+	float:						bottom;
+	overflow: 					auto;
 	border-style: 					none none dotted none;
 	border-width: 					0.1px;
 	border-color:					#1C21EC;
-	color:							#efefef;
+	color:						#efefef;
 	background-color: 				#16C2E5;
-	border-top-left-radius: 		0.5em;
-	border-top-right-radius: 		0.5em;
+	border-top-left-radius: 				0.5em;
+	border-top-right-radius: 				0.5em;
 	text-align: 					center;
-	font-size: 						small;
+	font-size: 					small;
 }
 
 .viewComponent {
 
-	float:							left;
+	float:						left;
 	margin-left: 					0.25em;
 	margin-top: 					0.15em;
 	background-color: 				lightgrey;
 	border-style: 					none dotted dotted dotted;
 	border-color:					#1C21EC;
 	border-width: 					0.1px;
-	border-top-left-radius: 		0.5em;
-	border-top-right-radius: 		0.5em;
-	height:							45em;
-	width:							55em;
+	border-top-left-radius: 				0.5em;
+	border-top-right-radius: 				0.5em;
+	height:						45em;
+	width:						55em;
 }

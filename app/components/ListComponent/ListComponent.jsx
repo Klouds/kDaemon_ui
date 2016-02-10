@@ -1,12 +1,14 @@
 import React from 'react'
+import ListItems from './ListItems.jsx'
 
 export default class ListComponent extends React.Component {
 	constructor(props) {
 		super(props)
 
-		const {nav, mode, value} = this.props
+		const {nav, mode, value, itemClick} = this.props
 
 	}
+
 	render() {
 		let content = this.renderListComponent()
 		return (
@@ -30,13 +32,8 @@ export default class ListComponent extends React.Component {
 		return (
 			<div>
 				<h1 className='header'> List of {this.props.nav} </h1>
-				<ul>
-				{items.map(item => {
-						return <li key={item.id}>{item.name}</li>
-						console.log(item.name)
-					})
-				}
-				</ul>
+				<ListItems items={items}
+					itemClick={this.props.itemClick} />
 			</div>
 		)
 	}

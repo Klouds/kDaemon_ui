@@ -115,7 +115,8 @@ export default class App extends React.Component {
 						>
 						<ListComponent 
 							nav={this.state.nav}	
-							mode={this.state.mode}/> 
+							mode={this.state.mode}
+							itemClick={this.itemClicked} /> 
 						</AltContainer> : ''
 
 				}	
@@ -153,6 +154,11 @@ export default class App extends React.Component {
 
 		//change current store
 		this.selectAppropriateStore(nav)
+	}
+
+	//Clicks an item
+	itemClicked(item) {
+		console.log(item.name)
 	}
 
 }
