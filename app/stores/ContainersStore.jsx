@@ -1,5 +1,6 @@
 import alt from '../libs/alt'
 import ContainersActions from '../actions/ContainersActions'
+import uuid from 'node-uuid'
 
 class ContainersStore {
 	
@@ -8,8 +9,18 @@ class ContainersStore {
 
 		this.containers = []
 	}
-	create() {
+	create(container) {
+		const containers = this.containers
 
+		container.id = uuid.v4() || container.id
+		container.name = container.name || ''
+		container.application_id = container.application_id || ''
+
+		this.setState({
+			containers: containers.concat(container)
+		})
+
+		return container
 	}
 	update() {
 

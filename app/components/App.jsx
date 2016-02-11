@@ -19,6 +19,7 @@ export default class App extends React.Component {
 		this.state = {
 			nav: 'nodes',
 			mode: 'show',
+			selectedItem: {},
 			mock_applications: [
 				{
 					name:'ghost_blog',
@@ -37,37 +38,32 @@ export default class App extends React.Component {
 			],
 			mock_nodes: [
 				{
-					name:'ghost_blog',
-					docker_image: 'ghost',
-					exposed_ports: ["2368"],
-					dependencies: [],
-					is_enabled: true
+					hostname:"Host1",
+			        d_ipaddr:"127.0.0.1",
+			        d_port: "2375",
+			        p_ipaddr:"127.0.0.1",
+			        p_port:"2376"
 				},
 				{
-					name:'codiad',
-					docker_image: 'quantumobject/docker-codiad',
-					exposed_ports: ["80"],
-					dependencies: [],
-					is_enabled: true
+					hostname:"Host2",
+			        d_ipaddr:"192.168.100.133",
+			        d_port: "2375",
+			        p_ipaddr:"192.168.100.133",
+			        p_port:"2376"
 				}
 			],
 			mock_containers: [
 				{
-					name:'ghost_blog',
-					docker_image: 'ghost',
-					exposed_ports: ["2368"],
-					dependencies: [],
-					is_enabled: true
+					name:'ghost_blog-ozzadar',
+					application_id: '1'
 				},
 				{
-					name:'codiad',
-					docker_image: 'quantumobject/docker-codiad',
-					exposed_ports: ["80"],
-					dependencies: [],
-					is_enabled: true
+					name:'codiad-faddat',
+					application_id: '2'
 				}
 			],
-			currentStore: ApplicationsStore
+			currentStore: ApplicationsStore,
+
 		}
 	}
 
@@ -116,11 +112,11 @@ export default class App extends React.Component {
 						<ListComponent 
 							nav={this.state.nav}	
 							mode={this.state.mode}
-							itemClick={this.itemClicked} /> 
+							itemClick={this.itemClicked.bind(this)} /> 
 						</AltContainer> : ''
 
 				}	
-				<ViewComponent />
+				<ViewComponent item={this.state.selectedItem} />
 			</div>
 		)
 	}
@@ -154,11 +150,14 @@ export default class App extends React.Component {
 
 		//change current store
 		this.selectAppropriateStore(nav)
+
+		//deselect item
+		this.setState({selectedItem: {}})
 	}
 
 	//Clicks an item
 	itemClicked(item) {
-		console.log(item.name)
+		this.setState({selectedItem: item})
 	}
 
 }

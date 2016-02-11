@@ -37,6 +37,12 @@ body {
 	margin-right: 					0.5em;
 	height:						1.5em;
 	width:						8em;
+
+	-moz-user-select: 				none;
+ 	-khtml-user-select: 				none;
+  	-webkit-user-select: 				none;
+	-ms-user-select: 				none;
+	user-select: 					none;
 	cursor:  					pointer;
 }
 
@@ -145,4 +151,21 @@ body {
 	border-top-right-radius: 				0.5em;
 	height:						45em;
 	width:						55em;
+}
+
+.view-content {
+	margin:auto;
+	text-align: center;
+	vertical-align: middle;
+	width: 70%;
+	background-color: #3799A6;
+
+}
+.view-content-item {
+	width: 100%;
+	background-color: #61C7D6;
+	padding-top:0.25em;
+	padding-bottom:0.25em;
+
+	margin-bottom: 0.5em;
 }
