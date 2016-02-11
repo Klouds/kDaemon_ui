@@ -36,9 +36,6 @@ export default class ViewComponent extends React.Component {
 			</tr>
 		)
 		
-		
-
-
 		var body = [];
 	 	
 	 	{keys.map(key => {
