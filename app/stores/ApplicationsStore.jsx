@@ -9,6 +9,7 @@ class ApplicationsStore {
 
 		this.applications = []
 	}
+	
 	create(application) {
 		const applications = this.applications
 
@@ -29,6 +30,7 @@ class ApplicationsStore {
 	update() {
 
 	}
+
 	delete() {
 
 	}

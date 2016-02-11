@@ -12,7 +12,8 @@ export default class ListComponent extends React.Component {
 	render() {
 		let content = this.renderListComponent()
 		return (
-			<div className='listComponent'>{content}</div>
+			<div className='listComponent'>
+			<h1 className='header'> List of {this.props.nav} </h1>{content}</div>
 		)
 	}
 
@@ -21,18 +22,16 @@ export default class ListComponent extends React.Component {
 		
 		let items = [];
 
-		let key
-		let list
-		for (key in object) {
+		for (let key in object) {
 			if (object.hasOwnProperty(key)) {
 				items = items.concat(object[key])
 			}
 		}
 
 		return (
-			<div>
-				<h1 className='header'> List of {this.props.nav} </h1>
-				<ListItems items={items}
+			<div >				
+				<ListItems 
+					items={items}
 					itemClick={this.props.itemClick} />
 			</div>
 		)

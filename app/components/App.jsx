@@ -130,6 +130,7 @@ export default class App extends React.Component {
 			return ApplicationsStore.getState().applications
 		}
 	}
+	
 	selectAppropriateStore(nav) {
 		let currentStore;
 
@@ -143,6 +144,7 @@ export default class App extends React.Component {
 
 		this.setState(currentStore)
 	}
+
 	//Change navigation state
 	changeNav(nav) {
 		//change the state
