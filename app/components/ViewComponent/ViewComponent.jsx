@@ -43,11 +43,9 @@ export default class ViewComponent extends React.Component {
 	 	
 	 	{keys.map(key => {
 				body.push (
-					<tr key= {this.props.item[key].id}
-						 className='view-content-item'>
-						
+					<tr key= {this.props.item[key].id}>						
 						<td>{key} </td>
-						<td>{this.props.item[key]} </td>
+						<td>{this.props.item[key].toString()} </td>
 						
 					</tr>
 				)
@@ -56,7 +54,8 @@ export default class ViewComponent extends React.Component {
 		}
 		
 		return (
-				<table className='view-content'>		
+				<table>
+					<col width='20%'/>		
 					<thead>{header}</thead>
 					<tbody>{body}</tbody>				
 				</table>
