@@ -16,7 +16,8 @@ export default class ListItems extends React.Component {
 
 				<ReactCSSTransitionGroup component='ul' className='list'
 					transitionName='example'
-					transitionEnterTimeout={1} 
+					transitionAppear={true}
+					transitionEnterTimeout={300} 
 					transitionLeaveTimeout={300}>
 					
 					{this.props.items.map(item => {
