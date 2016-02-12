@@ -111,6 +111,7 @@ export default class ViewComponent extends React.Component {
 					<col width='20%'/>		
 					<thead>{header}</thead>
 					<ReactCSSTransitionGroup component='tbody'
+					transitionAppear={true}
 					transitionName='example'
 					transitionEnterTimeout={500} 
 					transitionLeaveTimeout={300}>

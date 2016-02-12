@@ -13,16 +13,18 @@ export default class ListItems extends React.Component {
 	render() {
 		
 		return (
+
 				<ReactCSSTransitionGroup component='ul' className='list'
 					transitionName='example'
-					transitionEnterTimeout={500} 
+					transitionEnterTimeout={1} 
 					transitionLeaveTimeout={300}>
-				{this.props.items.map(item => {
-						return <ListItem key={item.id} 
-								item={item} 
-								itemClick={this.props.itemClick} />
-					})
-				}
+					
+					{this.props.items.map(item => {
+							return <ListItem key={item.id} 
+									item={item} 
+									itemClick={this.props.itemClick} />
+						})
+					}
 				</ReactCSSTransitionGroup>
 				
 		)
