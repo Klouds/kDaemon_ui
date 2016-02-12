@@ -9,9 +9,8 @@ export default class ListItem extends React.Component {
 	}
 	render(){
 		return (
-			<li 
-			className='list-item'
-			onClick={this.props.itemClick.bind(this, this.props.item)}
+			<li
+			onClick={this.props.itemClick.bind(this, this.props.item.id)}
 			>{this.props.item.name}</li>
 		)
 	}

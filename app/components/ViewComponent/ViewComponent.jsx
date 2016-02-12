@@ -1,10 +1,21 @@
 import React from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class ViewComponent extends React.Component {
 	constructor(props) {
 		super(props)
 
-		const {item} = this.props
+		const {itemId, value, mode, editButton, saveButton} = this.props
+
+		this.keys = []
+		this.workingItem = {}
+		this.item = {};
+		this.items = [];
+		
+	}
+
+	componentWillMount() {
+
 	}
 
 	render() {
@@ -19,43 +30,142 @@ export default class ViewComponent extends React.Component {
 	}
 
 	renderViewComponent() {
-		let keys = []
 
-		if (this.props.item !== undefined) {
-			for (var key in this.props.item) {
-				keys = keys.concat(key)
-			}
-		}
+		let mode = this.props.mode
+
+		this.updateObjects()
+		this.pickItem()
+
+		let keys = this.updateKeys()
 
 		var header = []
+
+
+		let editdisplay
+
+		if (mode === 'edit') {
+			editdisplay = 'cancel-button'
+		} else if (keys.length !== 0 ) {
+			editdisplay = 'edit-button'
+		} else {
+			editdisplay = 'NAC' //NOT A CLASS
+		}
 
 	  	header.push(
 	  		<tr>
 				<th> Key </th>
-				<th> Value </th>
+				<th> Value {(mode === 'edit') ? '| Edit Mode |' : ''} <div className={editdisplay}
+								onClick={this.props.editButton}/></th>
 			</tr>
 		)
 		
 		var body = [];
 	 	
-	 	{keys.map(key => {
-				body.push (
-					<tr key= {this.props.item[key].id}>						
-						<td>{key} </td>
-						<td>{this.props.item[key].toString()} </td>
+	 	if (mode === 'show') {
+		 	{keys.map(key => {
+					body.push (
+						<tr key= {this.item[key].id}>						
+							<td>{key} </td>
+							<td>{this.item[key].toString()} </td>
+							
+						</tr>
+					)
 						
-					</tr>
-				)
-					
-			})
+				})
+			}
+		} else if (mode === 'edit') {
+			{keys.map(key => {
+					body.push (
+						<tr key= {this.item[key].id}>						
+							<td>{key} </td>
+							<td>
+								{
+									(key === 'id') ? this.item[key].toString()
+									: <input 	type="text"
+											name={key}
+											ref={key}
+											autofocus={true}
+											defaultValue={this.item[key].toString()}
+											onBlur={this.finishEdit.bind(this)}
+											onKeyPress={this.checkEnter} />									 
+									
+								}
+							</td>
+							
+						</tr>
+					)
+						
+				})
+			}
+			//push a save button
+			body.push (
+				<tr>
+				<td></td>
+				<td> <button onClick={this.saveEdit.bind(this)}> Save </button></td>
+				</tr>
+			)
 		}
 		
 		return (
 				<table>
 					<col width='20%'/>		
 					<thead>{header}</thead>
-					<tbody>{body}</tbody>				
+					<ReactCSSTransitionGroup component='tbody'
+					transitionName='example'
+					transitionEnterTimeout={500} 
+					transitionLeaveTimeout={300}>
+						{body}
+					</ReactCSSTransitionGroup>
+			
 				</table>
 		)
+	}
+	updateObjects() {
+		let object = this.props.value
+
+		this.items = [] 
+
+		for (let key in object) {
+			if (object.hasOwnProperty(key)) {
+				this.items = this.items.concat(object[key])
+			}
+		}
+	}
+
+	pickItem() {
+		this.item = {}
+		this.items.map(item => {
+				if (item.id === this.props.itemId) {
+					this.item = item
+					return
+				}
+			}
+		)
+	}
+
+	updateKeys() {
+		let keys = []
+
+		if (this.item !== undefined) {
+			for (var key in this.item) {
+				keys = keys.concat(key)
+			}
+		}
+
+		this.keys = keys
+
+		return keys
+	}
+
+	finishEdit(e) {
+		this.workingItem[e.target.name] = e.target.value
+	}
+
+	saveEdit() {
+		console.log('saving application' , this.workingItem)
+		this.workingItem['id'] = this.item.id
+		this.props.saveButton(this.workingItem)
+		this.props.editButton()
+		this.workingItem = {}
 	}
 }

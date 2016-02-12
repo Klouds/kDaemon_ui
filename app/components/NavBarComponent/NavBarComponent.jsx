@@ -19,11 +19,11 @@ export default class NavBarComponent extends React.Component {
 		return ( 
 			<div >
 				<div className='navBar-logo' />
-				<button className='navbar-element'
+				<button
 					onClick={ this.props.onNodesClick } > Nodes </button>
-				<button className='navbar-element'
+				<button
 					onClick={ this.props.onAppsClick } > Applications </button>
-				<button className='navbar-element'
+				<button
 					onClick={ this.props.onContainersClick } > Containers </button>
 			</div>
 		)

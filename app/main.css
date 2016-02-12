@@ -26,7 +26,7 @@ body {
 
 }
 
-.navbar-element {
+.navBar button {
 	color:						black;
 	font-size: 					medium;
 	background-color: 				#2BB9CC;
@@ -49,7 +49,7 @@ body {
 	cursor:  					pointer;
 }
 
-.navbar-element:hover {
+.navBar button:hover {
 	background-color: 				#0FCCE5;
 	color:							black;
 
@@ -57,7 +57,7 @@ body {
 	transition: 					0.6s;
 }
 
-.navbar-element:focus {
+.navBar button:focus {
 	outline:none;
 	background-color: 				#0FCCE5;
 	color:							black;
@@ -78,6 +78,49 @@ body {
 	width :						2em;
 	padding-left: 					1em;
 
+}
+
+.edit-button {
+	float:							right;
+	background-image: 				url('./images/edit-icon-grey.png');
+	background-size:				1em 1em;
+	background-repeat: 				no-repeat;
+	height:							1em;
+	width :							1em;
+	margin-right: 					0;
+}
+
+.edit-button:hover {
+	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
+	transition: 0.6s;
+	cursor: pointer;
+}
+
+.cancel-button {
+	float:							right;
+	background-image: 				url('./images/cancel-icon-grey.png');
+	background-size:				1em 1em;
+	background-repeat: 				no-repeat;
+	height:							1em;
+	width :							1em;
+	margin-right: 					0;
+}
+
+.add-button {
+	margin:auto;
+	background-image: 				url('./images/add-button-silver.png');
+	background-size:				1em 1em;
+	background-repeat: 				no-repeat;
+	height:							1em;
+	width :							1em;
+	padding-bottom:0.25em;
+	cursor: pointer;
+}
+
+.cancel-button:hover {
+	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
+	transition: 0.6s;
+	cursor: pointer;
 }
 
 .listComponent {
@@ -123,7 +166,7 @@ body {
   
 }
 
-.list-item {
+.list li {
 	list-style:  					none;
 	background-color: 				#2BB9CC;
 	border-radius: 					0.25em;
@@ -145,7 +188,7 @@ body {
 	cursor: 						pointer;
 }
 
-.list-item:hover {
+.list li:hover {
 	background-color: 				#0FCCE5;
 	color:							black;
 
@@ -171,7 +214,7 @@ body {
 
 .viewComponent {
 
-	float:						left;
+	float:						right;
 	margin-left: 					0.25em;
 	margin-top: 					0.15em;
 	background-color: 				lightgrey;
@@ -214,4 +257,34 @@ body {
 	color:							white;
 	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
 	transition: 					0.6s;
+}
+
+.viewComponent input {
+	text-align: center;
+	font-variant: small-caps;
+	font-size:100%;
+	color: white;
+	background-color: #3799A6;
+}
+
+.viewComponent button {
+	background-color: #378D9A;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

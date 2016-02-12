@@ -25,7 +25,7 @@ export default class App extends React.Component {
 					name:'ghost_blog',
 					docker_image: 'ghost',
 					exposed_ports: ["2368"],
-					dependencies: [],
+					dependencies: ["mysql", "nodebb"],
 					is_enabled: true
 				},
 				{
@@ -38,14 +38,14 @@ export default class App extends React.Component {
 			],
 			mock_nodes: [
 				{
-					hostname:"Host1",
+					name:"Host1",
 			        d_ipaddr:"127.0.0.1",
 			        d_port: "2375",
 			        p_ipaddr:"127.0.0.1",
 			        p_port:"2376"
 				},
 				{
-					hostname:"Host2",
+					name:"Host2",
 			        d_ipaddr:"192.168.100.133",
 			        d_port: "2375",
 			        p_ipaddr:"192.168.100.133",
@@ -102,21 +102,24 @@ export default class App extends React.Component {
 					onContainersClick={this.changeNav.bind(this, 'containers')} 
 				/>
 
-				{(this.state.mode === 'show') ? 
-						<AltContainer 
-							stores={[this.state.currentStore]}
-							inject={{
-								value: () => [value]
-						}}
-						>
-						<ListComponent 
-							nav={this.state.nav}	
-							mode={this.state.mode}
-							itemClick={this.itemClicked.bind(this)} /> 
-						</AltContainer> : ''
 
-				}	
-				<ViewComponent item={this.state.selectedItem} />
+				<AltContainer 
+					stores={[this.state.currentStore]}
+					inject={{
+						value: () => [value]
+				}}
+				>
+					<ListComponent 
+						nav={this.state.nav}	
+						mode={this.state.mode}
+						itemClick={this.itemClicked.bind(this)} 
+						addClick={this.addClick.bind(this)} /> 
+									
+					<ViewComponent itemId={this.state.selectedItem} 
+							mode={this.state.mode}
+							editButton={this.editClicked.bind(this)}
+							saveButton={this.saveEdit.bind(this)} />
+				</AltContainer>
 			</div>
 		)
 	}
@@ -145,6 +148,25 @@ export default class App extends React.Component {
 		this.setState(currentStore)
 	}
 
+	addClick() {
+		let newItem = {
+					name:'ghost_blog',
+					docker_image: 'ghost',
+					exposed_ports: ["2368"],
+					dependencies: ["mysql", "nodebb"],
+					is_enabled: true
+				}
+
+		if (this.state.nav === 'applications') {
+			ApplicationsActions.create(newItem)
+		} else if (this.state.nav === 'containers') {
+			ContainersActions.create(newItem)
+		} else if (this.state.nav === 'nodes') {
+			NodesActions.create(newItem)
+		}
+
+		this.forceUpdate()
+	}
 	//Change navigation state
 	changeNav(nav) {
 		//change the state
@@ -154,12 +176,38 @@ export default class App extends React.Component {
 		this.selectAppropriateStore(nav)
 
 		//deselect item
-		this.setState({selectedItem: {}})
+		this.setState({
+			selectedItem: {},
+			mode: 'show'})
 	}
 
 	//Clicks an item
-	itemClicked(item) {
-		this.setState({selectedItem: item})
+	itemClicked(id) {
+		this.setState(
+			{
+				selectedItem: id,
+				mode: 'show'	
+			})
+	}
+
+	//Edit button
+	editClicked() {
+		if (this.state.mode !== 'edit'){
+			this.setState({mode:'edit'})
+		} else {
+			this.setState({mode:'show'})
+		}
+	}
+
+	//Save edited item
+	saveEdit(item) {
+		if (this.state.nav === 'applications') {
+			ApplicationsActions.update(item)
+		} else if (this.state.nav === 'containers') {
+			ContainersActions.update(item)
+		} else if (this.state.nav === 'nodes') {
+			NodesActions.update(item)
+		}
 	}
 
 }

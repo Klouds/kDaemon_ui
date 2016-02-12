@@ -1,6 +1,7 @@
 //Container class for displaying all items in the list
 import React from 'react'
 import ListItem from './ListItem.jsx'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class ListItems extends React.Component {
 	constructor(props) {
@@ -12,14 +13,18 @@ export default class ListItems extends React.Component {
 	render() {
 		
 		return (
-			<ul className='list'>
+				<ReactCSSTransitionGroup component='ul' className='list'
+					transitionName='example'
+					transitionEnterTimeout={500} 
+					transitionLeaveTimeout={300}>
 				{this.props.items.map(item => {
 						return <ListItem key={item.id} 
 								item={item} 
 								itemClick={this.props.itemClick} />
 					})
 				}
-			</ul>
+				</ReactCSSTransitionGroup>
+				
 		)
 	}
 }

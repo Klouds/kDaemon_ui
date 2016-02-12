@@ -22,8 +22,17 @@ class ContainersStore {
 
 		return container
 	}
-	update() {
+	update(updatedContainer) {
+		const containers = this.containers.map(container => {
+		
+		if (container.id === updatedContainer.id) {
+			return Object.assign({}, container, updatedContainer)
+		}
 
+		return container
+		})
+		
+		this.setState({containers})
 	}
 	delete() {
 

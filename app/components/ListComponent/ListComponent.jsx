@@ -5,7 +5,7 @@ export default class ListComponent extends React.Component {
 	constructor(props) {
 		super(props)
 
-		const {nav, mode, value, itemClick} = this.props
+		const {nav, mode, value, itemClick, addClick} = this.props
 
 	}
 
@@ -29,10 +29,12 @@ export default class ListComponent extends React.Component {
 		}
 
 		return (
-			<div >				
+			<div >
+				<div onClick={this.props.addClick} className='add-button' />				
 				<ListItems 
 					items={items}
 					itemClick={this.props.itemClick} />
+				
 			</div>
 		)
 	}

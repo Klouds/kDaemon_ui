@@ -27,8 +27,16 @@ class ApplicationsStore {
 		return application
 	}
 
-	update() {
+	update(updatedApplication) {
+		const applications = this.applications.map(application => {
+			if (application.id === updatedApplication.id) {
+				return Object.assign({}, application, updatedApplication)
+			}
 
+			return application
+		})
+
+		this.setState({applications})
 	}
 
 	delete() {

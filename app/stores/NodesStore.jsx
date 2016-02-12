@@ -14,8 +14,7 @@ class NodesStore {
 		const nodes = this.nodes
 
 		node.id = uuid.v4() || node.id
-		node.name = node.hostname || ''
-		node.hostname = node.hostname || ''
+		node.name = node.name || ''
 		node.d_ipaddr = node.d_ipaddr || ''
 		node.d_port = node.d_port || ''
 		node.p_ipaddr = node.p_ipaddr || ''
@@ -27,8 +26,17 @@ class NodesStore {
 
 		return node
 	}
-	update() {
+	update(updatedNode) {
+		const nodes = this.nodes.map(node => {
+		
+			if (node.id === updatedNode.id) {
+				return Object.assign({}, node, updatedNode)
+			}
 
+			return node
+		})
+		
+		this.setState({nodes})
 	}
 	delete() {
 
