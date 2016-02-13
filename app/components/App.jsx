@@ -118,7 +118,8 @@ export default class App extends React.Component {
 					<ViewComponent itemId={this.state.selectedItem} 
 							mode={this.state.mode}
 							editButton={this.editClicked.bind(this)}
-							saveButton={this.saveEdit.bind(this)} />
+							saveButton={this.saveEdit.bind(this)} 
+							deleteButton={this.deleteSelected.bind(this)} />
 				</AltContainer>
 			</div>
 		)
@@ -150,12 +151,8 @@ export default class App extends React.Component {
 
 	addClick() {
 		let newItem = {
-					name:'ghost_blog',
-					docker_image: 'ghost',
-					exposed_ports: ["2368"],
-					dependencies: ["mysql", "nodebb"],
-					is_enabled: true
-				}
+				name: 'new ' + this.state.nav
+		}
 
 		if (this.state.nav === 'applications') {
 			ApplicationsActions.create(newItem)
@@ -208,6 +205,21 @@ export default class App extends React.Component {
 		} else if (this.state.nav === 'nodes') {
 			NodesActions.update(item)
 		}
+	}
+
+	//Delete selected item
+	deleteSelected(id) {
+		if (this.state.nav === 'applications') {
+			ApplicationsActions.delete(id)
+		} else if (this.state.nav === 'containers') {
+			console.log('containers', id)
+			ContainersActions.delete(id)
+		} else if (this.state.nav === 'nodes') {
+			NodesActions.delete(id)
+		}
+
+		this.selectedItem = ''
+		this.setState({mode:'show'})
 	}
 
 }

@@ -34,8 +34,11 @@ class ContainersStore {
 		
 		this.setState({containers})
 	}
-	delete() {
 
+	delete(id) {
+		this.setState({
+			containers: this.containers.filter(container => container.id !== id)
+		})
 	}
 }
 

@@ -5,7 +5,7 @@ export default class ViewComponent extends React.Component {
 	constructor(props) {
 		super(props)
 
-		const {itemId, value, mode, editButton, saveButton} = this.props
+		const {itemId, value, mode, editButton, saveButton, deleteButton} = this.props
 
 		this.keys = []
 		this.workingItem = {}
@@ -54,8 +54,12 @@ export default class ViewComponent extends React.Component {
 	  	header.push(
 	  		<tr>
 				<th> Key </th>
-				<th> Value {(mode === 'edit') ? '| Edit Mode |' : ''} <div className={editdisplay}
-								onClick={this.props.editButton}/></th>
+				<th> Value 
+				<div className={editdisplay}
+					onClick={this.props.editButton}/>
+				{(mode === 'edit') ? <div onClick={this.deleteSelected.bind(this)} 
+										className='delete-button'/> : '' }
+				</th>
 			</tr>
 		)
 		
@@ -121,6 +125,11 @@ export default class ViewComponent extends React.Component {
 				</table>
 		)
 	}
+
+	deleteSelected() {
+		this.props.deleteButton(this.props.itemId)
+	}
+
 	updateObjects() {
 		let object = this.props.value
 

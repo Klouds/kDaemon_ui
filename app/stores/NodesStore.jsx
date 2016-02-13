@@ -38,8 +38,10 @@ class NodesStore {
 		
 		this.setState({nodes})
 	}
-	delete() {
-
+	delete(id) {
+		this.setState({
+			nodes: this.nodes.filter(node => node.id !== id)
+		})
 	}
 }
 

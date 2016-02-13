@@ -39,8 +39,10 @@ class ApplicationsStore {
 		this.setState({applications})
 	}
 
-	delete() {
-
+	delete(id) {
+		this.setState({
+			applications: this.applications.filter(application => application.id !== id)
+		})
 	}
 }
 
