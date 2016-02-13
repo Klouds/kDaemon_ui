@@ -12,7 +12,7 @@ class ContainersStore {
 	create(container) {
 		const containers = this.containers
 
-		container.id = uuid.v4() || container.id
+		container.id = container.id
 		container.name = container.name || ''
 		container.application_id = container.application_id || ''
 

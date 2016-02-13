@@ -68,17 +68,19 @@ export default class App extends React.Component {
 		}
 	}
 
-	componentWillMount() {
-		this.loadApplicationsIntoStore();
-		//this.loadNodesIntoStore();
-		this.loadContainersIntoStore();
-	}
-
 	componentDidMount() {
 		let ws = new WebSocket('ws://192.168.100.133:4000/ws')
     	let socket = this.socket = new Socket(ws); 
     	socket.on('connect', this.onConnect.bind(this));
+
+    	//Monitors 
     	socket.on('nodes add', this.onNodeAdd.bind(this));
+    	socket.on('nodes remove', this.onNodeRemove.bind(this));   	
+    	socket.on('applications add', this.onApplicationAdd.bind(this));
+    	socket.on('applications remove', this.onApplicationRemove.bind(this));   	
+    	socket.on('containers add', this.onContainerAdd.bind(this));
+    	socket.on('containers remove', this.onContainerRemove.bind(this));
+
 	}
 
 	onNodeAdd(message) {
@@ -86,24 +88,29 @@ export default class App extends React.Component {
 		this.forceUpdate()
 	}
 
-	loadApplicationsIntoStore() {
-		this.state.mock_applications.map(app => {
-			ApplicationsActions.create(app)
-		})
-	}	
-
-	loadNodesIntoStore() {
-		this.state.mock_nodes.map(node => {
-			NodesActions.create(node)
-		})
-	}	
-
-	loadContainersIntoStore() {
-		this.state.mock_containers.map(container => {
-			ContainersActions.create(container)
-		})
+	onNodeRemove(message) {
+		NodesActions.delete(message.id)
+		this.forceUpdate()
 	}
-	
+	onApplicationAdd(message) {
+		ApplicationsActions.create(message)
+		this.forceUpdate()
+	}
+
+	onApplicationRemove(message) {
+		ApplicationsActions.delete(message.id)
+		this.forceUpdate()
+	}
+	onContainerAdd(message) {
+		ContainersActions.create(message)
+		this.forceUpdate()
+	}
+
+	onContainerRemove(message) {
+		ContainersActions.delete(message.id)
+		this.forceUpdate()
+	}
+
 	onConnect() {
 		this.setState({connected: true});
 		this.changeNav(this.state.nav)  	

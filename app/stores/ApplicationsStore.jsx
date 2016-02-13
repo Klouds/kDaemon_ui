@@ -13,7 +13,7 @@ class ApplicationsStore {
 	create(application) {
 		const applications = this.applications
 
-		application.id = uuid.v4() || application.id
+		application.id = application.id
 		application.name = application.name || ''
 		application.docker_image = application.docker_image || ''
 		application.exposed_ports = application.exposed_ports || []

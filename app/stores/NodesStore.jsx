@@ -13,7 +13,7 @@ class NodesStore {
 	create(node) {
 		const nodes = this.nodes
 
-		node.id = uuid.v4() || node.id
+		node.id = node.id
 		node.name = node.name || ''
 		node.d_ipaddr = node.d_ipaddr || ''
 		node.d_port = node.d_port || ''
