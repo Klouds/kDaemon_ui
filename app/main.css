@@ -1,52 +1,52 @@
 body {
 	background: 					#E9D8C0;
 	font-family: 					sans-serif;
-	font-variant: small-caps;
+	font-variant: 					small-caps;
 }
 
 .mainDiv {
-	position:					relative;
-	margin:						auto;
+	position:						relative;
+	margin:							auto;
 	line-height: 					1em;
-	width: 						65.5em;
+	width: 							65.5em;
 }
 
 .navBar {
 
-	float:						top;
+	float:							top;
 	margin-top: 					0.5em;
 	background-color: 				#3799A6;
 	border-radius: 					0.5em;
 	border-style: 					dotted;
 	border-width: 					0.1px;
 	border-color: 					#1A7D8A;
-	width: 						99.8%;
+	width: 							99.8%;
 	height: 						2.5em;
 	text-align: 					center;
 
 }
 
 .navBar button {
-	color:						black;
-	font-size: 					medium;
+	color:							black;
+	font-size: 						medium;
 	background-color: 				#2BB9CC;
 	border-radius: 					2em;
 	border-style:					solid;
-	border-color: 				#1A7D8A;
-	float:						right;
-	margin-top:					0.5em;
+	border-color: 					#1A7D8A;
+	float:							right;
+	margin-top:						0.5em;
 	margin-left: 					0.5em;
 	margin-right: 					0.5em;
-	height:						1.5em;
-	width:						8em;
+	height:							1.5em;
+	width:							8em;
 
 
 	-moz-user-select: 				none;
- 	-khtml-user-select: 				none;
-  	-webkit-user-select: 				none;
+ 	-khtml-user-select: 			none;
+  	-webkit-user-select: 			none;
 	-ms-user-select: 				none;
 	user-select: 					none;
-	cursor:  					pointer;
+	cursor:  						pointer;
 }
 
 .navBar button:hover {
@@ -68,14 +68,14 @@ body {
 
 .navBar-logo {
 
-	float:						left;
+	float:							left;
 	margin-top: 					0.25em;
 	margin-left: 					0.25em;
 	background-image: 				url('./images/logo.png');
 	background-size:				1.95em 1.95em;
 	background-repeat: 				no-repeat;
-	height:						2.25em;
-	width :						2em;
+	height:							2.25em;
+	width :							2em;
 	padding-left: 					1em;
 
 }
@@ -119,14 +119,14 @@ body {
 	background-repeat: 				no-repeat;
 	height:							1em;
 	width :							1em;
-	padding-bottom:0.25em;
-	cursor: pointer;
+	padding-bottom:					0.25em;
+	cursor: 						pointer;
 }
 
 .add-button:hover {
 	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
-	transition: 0.6s;
-	cursor: pointer;
+	transition: 					0.6s;
+	cursor: 						pointer;
 }
 
 .delete-button {
@@ -136,57 +136,57 @@ body {
 	background-repeat: 				no-repeat;
 	height:							1em;
 	width :							1em;
-	padding-bottom:0.25em;
-	cursor: pointer;
-	margin-right: 0.25em;
+	padding-bottom:					0.25em;
+	cursor: 						pointer;
+	margin-right: 					0.25em;
 }
 
 .delete-button:hover {
 	box-shadow: 					0 0 0.3em 0.03em rgba(0,0,0,0.7);
-	transition: 0.6s;
-	cursor: pointer;
+	transition: 					0.6s;
+	cursor: 						pointer;
 }
 
 .listComponent {
 
-	float:						left;
+	float:							left;
 	margin-top: 					0.15em;
 	background-color: 				lightgrey;
 	border-style: 					none dotted dotted dotted;
 	border-color: 					#1A7D8A;
 	border-width: 					0.1px;
-	border-top-left-radius: 				0.5em;
-	border-top-right-radius: 				0.5em;
-	height:						45em;
-	width:						10em;
-	overflow-y: hidden;
+	border-top-left-radius: 		0.5em;
+	border-top-right-radius: 		0.5em;
+	height:							45em;
+	width:							10em;
+	overflow-y: 					hidden;
 }
 
 
 .list {
-	padding:	 				0 0 0 0;
-	margin-top:					0;
-	overflow-y:auto;
-	height: 43em;
-	direction:rtl;
+	padding:	 					0 0 0 0;
+	margin-top:						0;
+	overflow-y:						auto;
+	height: 						43em;
+	direction:						rtl;
 }
 
 .list::-webkit-scrollbar {
-	width:0.25em;
-     background-color: transparent;
-     -webkit-border-radius: 1em;
+	width:							0.25em;
+    background-color: 				transparent;
+    -webkit-border-radius: 			1em;
 }
  
 .list::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-     background-color: transparent;
-     -webkit-border-radius: 1em;
+    -webkit-box-shadow: 			inset 0 0 6px rgba(0,0,0,0.3);
+     background-color: 				transparent;
+     -webkit-border-radius: 		1em;
 }
  
 .list::-webkit-scrollbar-thumb:vertical {
-  background-color: #2BB9CC;
-  height:50px;
-  -webkit-border-radius: 1em;
+  background-color:	 				#2BB9CC;
+  height:							50px;
+  -webkit-border-radius: 			1em;
   
 }
 
@@ -202,11 +202,11 @@ body {
 	margin-bottom: 					0.25em;
 	padding-top:					0.25em;
 	text-align: 					center;
-
+	overflow: hidden;
 
 	-moz-user-select: 				none;
- 	-khtml-user-select: 				none;
-  	-webkit-user-select: 				none;
+ 	-khtml-user-select: 			none;
+  	-webkit-user-select: 			none;
 	-ms-user-select: 				none;
 	user-select: 					none;
 	cursor: 						pointer;
@@ -223,56 +223,55 @@ body {
 .header {
 
 	margin-top: 					0;
-	float:						bottom;
-	overflow: 					auto;
+	float:							bottom;
+	overflow: 						auto;
 	border-style: 					none none dotted none;
 	border-width: 					0.1px;
 	border-color: 					#1A7D8A;
-	color:						#efefef;
+	color:							#efefef;
 	background-color: 				#3799A6;
-	border-top-left-radius: 				0.5em;
-	border-top-right-radius: 				0.5em;
+	border-top-left-radius: 		0.5em;
+	border-top-right-radius: 		0.5em;
 	text-align: 					center;
-	font-size: 					small;
+	font-size: 						small;
 }
 
 .viewComponent {
 
-	float:						right;
+	float:							right;
 	margin-left: 					0.25em;
 	margin-top: 					0.15em;
 	background-color: 				lightgrey;
 	border-style: 					none dotted dotted dotted;
 	border-color: 					#1A7D8A;
 	border-width: 					0.1px;
-	border-top-left-radius: 				0.5em;
-	border-top-right-radius: 				0.5em;
-	height:						45em;
-	width:						55em;
+	border-top-left-radius: 		0.5em;
+	border-top-right-radius: 		0.5em;
+	height:							45em;
+	width:							55em;
 }
 
 .viewComponent table {
-	margin:auto;
-	text-align: center;
-	vertical-align: middle;
-	width: 70%;
-	background-color: #3799A6;
-
+	margin:							auto;
+	text-align: 					center;
+	vertical-align: 				middle;
+	width: 							90%;
+	background-color: 				#3799A6;
 }
 
 .viewComponent td {
-	background-color: #61C7D6;
-	padding-top:0.25em;
-	padding-bottom:0.25em;
-	margin-bottom: 0.5em;
+	background-color: 				#61C7D6;
+	padding-top:					0.25em;
+	padding-bottom:					0.25em;
+	margin-bottom: 					0.5em;
 
 	-moz-user-select: 				none;
- 	-khtml-user-select: 				none;
-  	-webkit-user-select: 				none;
+ 	-khtml-user-select: 			none;
+  	-webkit-user-select: 			none;
 	-ms-user-select: 				none;
 	user-select: 					none;
 
-	cursor:crosshair;
+	cursor:							crosshair;
 }
 
 .viewComponent td:hover {
@@ -284,40 +283,40 @@ body {
 }
 
 .viewComponent input {
-	text-align: center;
-	font-variant: small-caps;
-	font-size:100%;
-	color: white;
-	background-color: #3799A6;
+	text-align: 					center;
+	font-variant: 					small-caps;
+	font-size:						100%;
+	color: 							white;
+	background-color: 				#3799A6;
 }
 
 .viewComponent button {
-	background-color: #378D9A;
+	background-color: 				#378D9A;
 }
 
 .example-enter {
-  opacity: 0.01;
+  opacity: 							0.01;
 }
 
 .example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
+  opacity: 							1;
+  transition: 						opacity 500ms ease-in;
 }
 
 .example-leave {
-  opacity: 1;
+  opacity: 							1;
 }
 
 .example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+  opacity: 							0.01;
+  transition: 						opacity 300ms ease-in;
 }
 
 .example-appear {
-  opacity: 0.01;
+  opacity: 							0.01;
 }
 
 .example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
+  opacity: 							1;
+  transition: 						opacity .5s ease-in;
 }

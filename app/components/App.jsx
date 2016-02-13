@@ -11,6 +11,7 @@ import NodesStore from '../stores/NodesStore.jsx'
 import NodesActions from '../actions/NodesActions.jsx'
 import ContainersStore from '../stores/ContainersStore.jsx'
 import ContainersActions from '../actions/ContainersActions.jsx'
+import Socket from '../socket.js';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -69,8 +70,20 @@ export default class App extends React.Component {
 
 	componentWillMount() {
 		this.loadApplicationsIntoStore();
-		this.loadNodesIntoStore();
+		//this.loadNodesIntoStore();
 		this.loadContainersIntoStore();
+	}
+
+	componentDidMount() {
+		let ws = new WebSocket('ws://192.168.100.133:4000/ws')
+    	let socket = this.socket = new Socket(ws); 
+    	socket.on('connect', this.onConnect.bind(this));
+    	socket.on('nodes add', this.onNodeAdd.bind(this));
+	}
+
+	onNodeAdd(message) {
+		NodesActions.create(message)
+		this.forceUpdate()
 	}
 
 	loadApplicationsIntoStore() {
@@ -89,6 +102,11 @@ export default class App extends React.Component {
 		this.state.mock_containers.map(container => {
 			ContainersActions.create(container)
 		})
+	}
+	
+	onConnect() {
+		this.setState({connected: true});
+		this.changeNav(this.state.nav)  	
 	}
 
 	render() {
@@ -166,11 +184,18 @@ export default class App extends React.Component {
 	}
 	//Change navigation state
 	changeNav(nav) {
+
+		//unsubscribe old nav
+		this.socket.emit(`${this.state.nav} unsubscribe`);
+
 		//change the state
 		this.setState({nav})
 
 		//change current store
-		this.selectAppropriateStore(nav)
+		this.selectAppropriateStore(this.state.nav)
+
+		//subscribe new nav    	
+    	this.socket.emit(`${nav} subscribe`);  
 
 		//deselect item
 		this.setState({

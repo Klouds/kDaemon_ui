@@ -91,7 +91,7 @@ export default class ViewComponent extends React.Component {
 											autofocus={true}
 											defaultValue={this.item[key].toString()}
 											onBlur={this.finishEdit.bind(this)}
-											onKeyPress={this.checkEnter} />									 
+											onKeyPress={this.checkEnter.bind(this)} />									 
 									
 								}
 							</td>
@@ -116,6 +116,7 @@ export default class ViewComponent extends React.Component {
 					<thead>{header}</thead>
 					<ReactCSSTransitionGroup component='tbody'
 					transitionAppear={true}
+					transitionAppearTimeout={300}
 					transitionName='example'
 					transitionEnterTimeout={500} 
 					transitionLeaveTimeout={300}>
@@ -171,11 +172,18 @@ export default class ViewComponent extends React.Component {
 		this.workingItem[e.target.name] = e.target.value
 	}
 
+	checkEnter(e){
+		if (e.key === 'Enter') {
+			this.finishEdit(e)
+		}
+	}
+
 	saveEdit() {
-		console.log('saving application' , this.workingItem)
 		this.workingItem['id'] = this.item.id
 		this.props.saveButton(this.workingItem)
 		this.props.editButton()
 		this.workingItem = {}
 	}
+
+
 }
