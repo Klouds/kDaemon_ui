@@ -21,50 +21,7 @@ export default class App extends React.Component {
 			nav: 'nodes',
 			mode: 'show',
 			selectedItem: {},
-			mock_applications: [
-				{
-					name:'ghost_blog',
-					docker_image: 'ghost',
-					exposed_ports: ["2368"],
-					dependencies: ["mysql", "nodebb"],
-					is_enabled: true
-				},
-				{
-					name:'codiad',
-					docker_image: 'quantumobject/docker-codiad',
-					exposed_ports: ["80"],
-					dependencies: [],
-					is_enabled: true
-				}
-			],
-			mock_nodes: [
-				{
-					name:"Host1",
-			        d_ipaddr:"127.0.0.1",
-			        d_port: "2375",
-			        p_ipaddr:"127.0.0.1",
-			        p_port:"2376"
-				},
-				{
-					name:"Host2",
-			        d_ipaddr:"192.168.100.133",
-			        d_port: "2375",
-			        p_ipaddr:"192.168.100.133",
-			        p_port:"2376"
-				}
-			],
-			mock_containers: [
-				{
-					name:'ghost_blog-ozzadar',
-					application_id: '1'
-				},
-				{
-					name:'codiad-faddat',
-					application_id: '2'
-				}
-			],
 			currentStore: ApplicationsStore,
-
 		}
 	}
 
@@ -75,11 +32,14 @@ export default class App extends React.Component {
 
     	//Monitors 
     	socket.on('nodes add', this.onNodeAdd.bind(this));
-    	socket.on('nodes remove', this.onNodeRemove.bind(this));   	
+    	socket.on('nodes remove', this.onNodeRemove.bind(this));
+    	socket.on('nodes edit', this.onNodeEdit.bind(this));
     	socket.on('applications add', this.onApplicationAdd.bind(this));
-    	socket.on('applications remove', this.onApplicationRemove.bind(this));   	
+    	socket.on('applications remove', this.onApplicationRemove.bind(this));
+    	socket.on('applications edit', this.onApplicationEdit.bind(this));   	
     	socket.on('containers add', this.onContainerAdd.bind(this));
     	socket.on('containers remove', this.onContainerRemove.bind(this));
+    	socket.on('containers edit', this.onContainerEdit.bind(this));
 
 	}
 
@@ -92,6 +52,12 @@ export default class App extends React.Component {
 		NodesActions.delete(message.id)
 		this.forceUpdate()
 	}
+
+	onNodeEdit(message) {
+		NodesActions.update(message)
+		this.forceUpdate()
+	}
+
 	onApplicationAdd(message) {
 		ApplicationsActions.create(message)
 		this.forceUpdate()
@@ -101,6 +67,12 @@ export default class App extends React.Component {
 		ApplicationsActions.delete(message.id)
 		this.forceUpdate()
 	}
+
+	onApplicationEdit(message) {
+		ApplicationsActions.update(message)
+		this.forceUpdate()
+	}
+
 	onContainerAdd(message) {
 		ContainersActions.create(message)
 		this.forceUpdate()
@@ -108,6 +80,11 @@ export default class App extends React.Component {
 
 	onContainerRemove(message) {
 		ContainersActions.delete(message.id)
+		this.forceUpdate()
+	}
+
+	onContainerEdit(message) {
+		ContainersActions.update(message)
 		this.forceUpdate()
 	}
 

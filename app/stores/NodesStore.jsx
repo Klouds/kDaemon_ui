@@ -17,8 +17,6 @@ class NodesStore {
 		node.name = node.name || ''
 		node.d_ipaddr = node.d_ipaddr || ''
 		node.d_port = node.d_port || ''
-		node.p_ipaddr = node.p_ipaddr || ''
-		node.p_port = node.p_port || ''
 
 		this.setState({
 			nodes: nodes.concat(node)
@@ -27,6 +25,7 @@ class NodesStore {
 		return node
 	}
 	update(updatedNode) {
+		console.log(updatedNode)
 		const nodes = this.nodes.map(node => {
 		
 			if (node.id === updatedNode.id) {
@@ -38,6 +37,7 @@ class NodesStore {
 		
 		this.setState({nodes})
 	}
+
 	delete(id) {
 		this.setState({
 			nodes: this.nodes.filter(node => node.id !== id)
