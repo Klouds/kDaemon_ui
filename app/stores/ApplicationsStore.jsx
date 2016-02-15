@@ -10,6 +10,10 @@ class ApplicationsStore {
 		this.applications = []
 	}
 	
+	deleteAll() {
+		this.applications = []
+	}
+	
 	create(application) {
 		const applications = this.applications
 

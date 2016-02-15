@@ -136,6 +136,16 @@ export default class App extends React.Component {
 			return ApplicationsStore.getState().applications
 		}
 	}
+
+	getAppropriateStoreActions(nav){
+		if (nav === 'containers') {
+			return ContainersActions
+		} else if (nav === 'nodes') {
+			return NodesActions
+		} else if (nav === 'applications') {
+			return ApplicationsActions
+		}
+	}
 	
 	selectAppropriateStore(nav) {
 		let currentStore;
@@ -147,8 +157,6 @@ export default class App extends React.Component {
 		} else if (nav === 'applications') {
 			currentStore = ApplicationsStore
 		}
-
-		this.setState(currentStore)
 	}
 
 	addClick() {
@@ -170,6 +178,8 @@ export default class App extends React.Component {
 	changeNav(nav) {
 
 		//unsubscribe old nav
+		let actions = this.getAppropriateStoreActions(nav)
+		actions.deleteAll()
 		this.socket.emit(`${this.state.nav} unsubscribe`);
 
 		//change the state
@@ -177,6 +187,7 @@ export default class App extends React.Component {
 
 		//change current store
 		this.selectAppropriateStore(this.state.nav)
+
 
 		//subscribe new nav    	
     	this.socket.emit(`${nav} subscribe`);  
@@ -221,7 +232,6 @@ export default class App extends React.Component {
 		if (this.state.nav === 'applications') {
 			ApplicationsActions.delete(id)
 		} else if (this.state.nav === 'containers') {
-			console.log('containers', id)
 			ContainersActions.delete(id)
 		} else if (this.state.nav === 'nodes') {
 			NodesActions.delete(id)

@@ -20,7 +20,6 @@ export default class ListItems extends React.Component {
 					transitionAppearTimeout={1}
 					transitionEnterTimeout={300} 
 					transitionLeaveTimeout={300}>
-					
 					{this.props.items.map(item => {
 							return <ListItem key={item.id} 
 									item={item} 

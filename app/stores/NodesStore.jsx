@@ -10,6 +10,10 @@ class NodesStore {
 		this.nodes = []
 	}
 
+	deleteAll() {
+		this.nodes = []
+	}
+
 	create(node) {
 		const nodes = this.nodes
 

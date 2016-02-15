@@ -9,6 +9,11 @@ class ContainersStore {
 
 		this.containers = []
 	}
+
+	deleteAll() {
+		this.containers = []
+	}
+
 	create(container) {
 		const containers = this.containers
 
