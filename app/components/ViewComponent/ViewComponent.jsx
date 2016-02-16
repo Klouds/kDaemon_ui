@@ -57,7 +57,7 @@ export default class ViewComponent extends React.Component {
 				<th> Value 
 				<div className={editdisplay}
 					onClick={this.props.editButton}/>
-				{(mode === 'edit') ? <div onClickd={this.deleteSelected.bind(this)} 
+				{(mode === 'edit') ? <div onClick={this.deleteSelected.bind(this)} 
 										className='delete-button'/> : '' }
 				</th>
 			</tr>
@@ -179,7 +179,7 @@ export default class ViewComponent extends React.Component {
 	}
 
 	saveEdit() {
-		this.workingItem['id'] = this.item.id
+		this.workingItem.id = this.item.id
 		this.props.saveButton(this.workingItem)
 		this.props.editButton()
 		this.workingItem = {}

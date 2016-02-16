@@ -30,7 +30,7 @@ export default class ListComponent extends React.Component {
 
 		return (
 			<div >
-				<div className='add-button' />				
+				<div className='add-button' onClick={this.props.addClick} />				
 				<ListItems 
 					items={items}
 					itemClick={this.props.itemClick} />

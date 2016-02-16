@@ -41,6 +41,10 @@ const common = {
 			{
 				test: /\.(png|jpg|ico)$/,
 				loader: 'url?limit=25000'
+			},
+			{ 
+				test: /\.json$/, 
+				loaders: ['json-loader']
 			}
 		]
 	},

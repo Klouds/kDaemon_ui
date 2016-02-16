@@ -1,17 +1,23 @@
+//Base of all reality
 import React from 'react'
 
+//Components
 import NavBarComponent from './NavBarComponent/NavBarComponent.jsx'
 import ListComponent from './ListComponent/ListComponent.jsx'
 import ViewComponent from './ViewComponent/ViewComponent.jsx'
-import AltContainer from 'alt-container'
 
+//Flux Store Stuff
+import AltContainer from 'alt-container'
 import ApplicationsStore from '../stores/ApplicationsStore.jsx'
 import ApplicationsActions from '../actions/ApplicationsActions.jsx'
 import NodesStore from '../stores/NodesStore.jsx'
 import NodesActions from '../actions/NodesActions.jsx'
 import ContainersStore from '../stores/ContainersStore.jsx'
 import ContainersActions from '../actions/ContainersActions.jsx'
+
+//Functional Components
 import Socket from '../socket.js';
+import request from 'request-json'
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -22,15 +28,23 @@ export default class App extends React.Component {
 			mode: 'show',
 			selectedItem: {},
 			currentStore: ApplicationsStore,
+			json_client: {}
 		}
 	}
 
 	componentDidMount() {
+		let client = request.createClient('http://localhost:4000/0.0/')
+		console.log('created new client ', client)
+		//set up the JSON client
+		this.setState({json_client:client})
+
+
+		//Initialize websocket connection
 		let ws = new WebSocket('ws://192.168.100.133:4000/ws')
     	let socket = this.socket = new Socket(ws); 
     	socket.on('connect', this.onConnect.bind(this));
 
-    	//Monitors 
+    	//Sets up event handlers for changes in the database
     	socket.on('nodes add', this.onNodeAdd.bind(this));
     	socket.on('nodes remove', this.onNodeRemove.bind(this));
     	socket.on('nodes edit', this.onNodeEdit.bind(this));
@@ -159,21 +173,7 @@ export default class App extends React.Component {
 		}
 	}
 
-	addClick() {
-		let newItem = {
-				name: 'new ' + this.state.nav
-		}
 
-		if (this.state.nav === 'applications') {
-			ApplicationsActions.create(newItem)
-		} else if (this.state.nav === 'containers') {
-			ContainersActions.create(newItem)
-		} else if (this.state.nav === 'nodes') {
-			NodesActions.create(newItem)
-		}
-
-		this.forceUpdate()
-	}
 	//Change navigation state
 	changeNav(nav) {
 
@@ -216,29 +216,72 @@ export default class App extends React.Component {
 		}
 	}
 
+
+	//INTERACT WITH THE DATABASE HERE
+	
 	//Save edited item
 	saveEdit(item) {
-		if (this.state.nav === 'applications') {
-			ApplicationsActions.update(item)
-		} else if (this.state.nav === 'containers') {
-			ContainersActions.update(item)
-		} else if (this.state.nav === 'nodes') {
-			NodesActions.update(item)
-		}
+		//MAKE JSON UPDATE REQUEST
+		//
+		let id = item.id
+		delete item.id
+		let newItem = item
+
+		console.log(newItem)
+		console.log(this.state.json_client.patch(this.state.nav + '/' + id + '/update', 
+			newItem, function(err, res, body) {
+			return console.log(res.statusCode)
+		}))
 	}
 
 	//Delete selected item
 	deleteSelected(id) {
-		if (this.state.nav === 'applications') {
-			ApplicationsActions.delete(id)
-		} else if (this.state.nav === 'containers') {
-			ContainersActions.delete(id)
-		} else if (this.state.nav === 'nodes') {
-			NodesActions.delete(id)
-		}
+		//MAKE JSON DELETE REQUEST
+		this.state.json_client.delete(this.state.nav + '/' + id + '/delete', function(err, res, body) {
+			return console.log(res.statusCode)
+		})
 
 		this.selectedItem = ''
 		this.setState({mode:'show'})
+	}
+
+	addClick() {
+		console.log('Adding new ', this.state.nav)
+		let newItem = this.makeNewItem()
+
+		console.log(newItem)
+		//MAKE JSON POST REQUEST
+		this.state.json_client.post(this.state.nav + '/create',newItem, function(err, res, body) {
+			return console.log(res.statusCode)
+		})
+	}
+
+	makeNewItem() {
+		if (this.state.nav === 'containers') {
+			return (
+				{
+					name:"New Application"
+				}
+			)
+		} else if (this.state.nav === 'nodes') {
+			return (
+				{
+					name: "New Node",
+					d_ipaddr: "0.0.0.0",
+					d_port: "2375"
+				}
+			)
+		} else if (this.state.nav === 'applications') {
+			return (
+				{
+					name: "New Application",
+				    "exposed_ports":"0000",
+        			"docker_image": "docker-image",
+        			"dependencies":"",
+        			"is_enabled":true
+        		}
+			)
+		}
 	}
 
 }
