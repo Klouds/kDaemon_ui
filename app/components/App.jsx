@@ -268,7 +268,8 @@ export default class App extends React.Component {
 				{
 					name: "New Node",
 					d_ipaddr: "0.0.0.0",
-					d_port: "2375"
+					d_port: "2375",
+					state: "NEW"
 				}
 			)
 		} else if (this.state.nav === 'applications') {
