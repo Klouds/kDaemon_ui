@@ -40,7 +40,7 @@ export default class App extends React.Component {
 
 
 		//Initialize websocket connection
-		let ws = new WebSocket('ws://192.168.100.133:4000/ws')
+		let ws = new WebSocket('ws://localhost:4000/ws')
     	let socket = this.socket = new Socket(ws); 
     	socket.on('connect', this.onConnect.bind(this));
 
