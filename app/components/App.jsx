@@ -228,7 +228,7 @@ export default class App extends React.Component {
 		let newItem = item
 
 		console.log(newItem)
-		console.log(this.state.json_client.patch(this.state.nav + '/' + id + '/update', 
+		console.log(this.state.json_client.patch(this.state.nav + '/update/' + id, 
 			newItem, function(err, res, body) {
 			return console.log(res.statusCode)
 		}))
@@ -237,7 +237,7 @@ export default class App extends React.Component {
 	//Delete selected item
 	deleteSelected(id) {
 		//MAKE JSON DELETE REQUEST
-		this.state.json_client.delete(this.state.nav + '/' + id + '/delete', function(err, res, body) {
+		this.state.json_client.delete(this.state.nav + '/delete/' + id, function(err, res, body) {
 			return console.log(res.statusCode)
 		})
 
@@ -260,7 +260,7 @@ export default class App extends React.Component {
 		if (this.state.nav === 'containers') {
 			return (
 				{
-					name:"New Application"
+					name:"New Container"
 				}
 			)
 		} else if (this.state.nav === 'nodes') {
