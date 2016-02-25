@@ -133,14 +133,30 @@ export default class App extends React.Component {
 									
 					<ViewComponent itemId={this.state.selectedItem} 
 							mode={this.state.mode}
+							nav={this.state.nav}
+							LaunchButton={this.launchButton.bind(this)}
 							editButton={this.editClicked.bind(this)}
 							saveButton={this.saveEdit.bind(this)} 
 							deleteButton={this.deleteSelected.bind(this)} />
+
+
 				</AltContainer>
 			</div>
 		)
 	}
 
+	launchButton(id) {
+		console.log("launchbutton")
+
+		let newItem = this.makeNewItem()
+
+		console.log(newItem)
+		//MAKE JSON POST REQUEST
+		this.state.json_client.post(this.state.nav + '/launch/' + id,newItem, function(err, res, body) {
+			return console.log(res.statusCode)
+		})
+
+	}
 	getStoreValue(nav) {
 		if (nav === 'containers') {
 			return ContainersStore.getState().containers
@@ -228,10 +244,10 @@ export default class App extends React.Component {
 		let newItem = item
 
 		console.log(newItem)
-		console.log(this.state.json_client.patch(this.state.nav + '/update/' + id, 
+		this.state.json_client.patch(this.state.nav + '/update/' + id, 
 			newItem, function(err, res, body) {
 			return console.log(res.statusCode)
-		}))
+		})
 	}
 
 	//Delete selected item

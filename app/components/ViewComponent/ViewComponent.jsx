@@ -5,7 +5,7 @@ export default class ViewComponent extends React.Component {
 	constructor(props) {
 		super(props)
 
-		const {itemId, value, mode, editButton, saveButton, deleteButton} = this.props
+		const {itemId, value, nav, mode, editButton, LaunchButton, saveButton, deleteButton} = this.props
 
 		this.keys = []
 		this.workingItem = {}
@@ -108,7 +108,22 @@ export default class ViewComponent extends React.Component {
 				<td> <button onClick={this.saveEdit.bind(this)}> Save </button></td>
 				</tr>
 			)
+
+			//push a launch button on containers
+			if (this.props.nav === 'containers' && this.item.status !== 'UP') {
+								
+
+				body.push (<tr>
+				<td></td>
+				<td> <button onClick={this.launchButton.bind(this)}> Launch </button></td>
+				</tr>
+				)
+
+			}
+
 		}
+
+
 		
 		return (
 				<table>
@@ -126,6 +141,8 @@ export default class ViewComponent extends React.Component {
 				</table>
 		)
 	}
+
+
 
 	deleteSelected() {
 		this.props.deleteButton(this.props.itemId)
@@ -178,6 +195,11 @@ export default class ViewComponent extends React.Component {
 		}
 	}
 
+	launchButton(id) {
+		this.props.LaunchButton(this.item.id)
+		this.props.editButton()
+
+	}
 	saveEdit() {
 		this.workingItem.id = this.item.id
 		this.props.saveButton(this.workingItem)
