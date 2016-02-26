@@ -5,7 +5,7 @@ export default class ViewComponent extends React.Component {
 	constructor(props) {
 		super(props)
 
-		const {itemId, value, nav, mode, editButton, LaunchButton, saveButton, deleteButton} = this.props
+		const {itemId, value, nav, mode, editButton, LaunchButton, stopButton, saveButton, deleteButton} = this.props
 
 		this.keys = []
 		this.workingItem = {}
@@ -115,10 +115,16 @@ export default class ViewComponent extends React.Component {
 
 				body.push (<tr>
 				<td></td>
-				<td> <button onClick={this.launchButton.bind(this)}> Launch </button></td>
+				<td> <button className='launch-button' onClick={this.launchButton.bind(this)}> Launch </button></td>
 				</tr>
 				)
 
+			} else {
+				body.push (<tr>
+				<td></td>
+				<td> <button className="stop-button" onClick={this.stopButton.bind(this)}> Stop </button></td>
+				</tr>
+				)
 			}
 
 		}
@@ -143,7 +149,10 @@ export default class ViewComponent extends React.Component {
 	}
 
 
-
+	stopButton() {
+		this.props.stopButton(this.item.id)
+		this.props.editButton()
+	}
 	deleteSelected() {
 		this.props.deleteButton(this.props.itemId)
 	}

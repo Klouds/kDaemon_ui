@@ -265,11 +265,7 @@ body {
 	padding-bottom:					0.25em;
 	margin-bottom: 					0.5em;
 
-	-moz-user-select: 				none;
- 	-khtml-user-select: 			none;
-  	-webkit-user-select: 			none;
-	-ms-user-select: 				none;
-	user-select: 					none;
+
 
 	cursor:							crosshair;
 }
@@ -290,10 +286,14 @@ body {
 	background-color: 				#3799A6;
 }
 
-.viewComponent button {
-	background-color: 				#378D9A;
+
+.launch-button {
+	background-color: 				#007E2B;
 }
 
+.stop-button {
+	background-color: 				#BE3145;
+}
 .example-enter {
   opacity: 							0.01;
 }

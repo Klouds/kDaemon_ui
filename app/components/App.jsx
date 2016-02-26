@@ -33,14 +33,14 @@ export default class App extends React.Component {
 	}
 
 	componentDidMount() {
-		let client = request.createClient('http://localhost:4000/0.0/')
+		let client = request.createClient('http://192.168.100.2:4000/0.0/')
 		console.log('created new client ', client)
 		//set up the JSON client
 		this.setState({json_client:client})
 
 
 		//Initialize websocket connection
-		let ws = new WebSocket('ws://localhost:4000/ws')
+		let ws = new WebSocket('ws://192.168.100.2:4000/ws')
     	let socket = this.socket = new Socket(ws); 
     	socket.on('connect', this.onConnect.bind(this));
 
@@ -137,7 +137,8 @@ export default class App extends React.Component {
 							LaunchButton={this.launchButton.bind(this)}
 							editButton={this.editClicked.bind(this)}
 							saveButton={this.saveEdit.bind(this)} 
-							deleteButton={this.deleteSelected.bind(this)} />
+							deleteButton={this.deleteSelected.bind(this)}
+							stopButton={this.stopButton.bind(this)} />
 
 
 				</AltContainer>
@@ -148,15 +149,23 @@ export default class App extends React.Component {
 	launchButton(id) {
 		console.log("launchbutton")
 
-		let newItem = this.makeNewItem()
 
-		console.log(newItem)
 		//MAKE JSON POST REQUEST
-		this.state.json_client.post(this.state.nav + '/launch/' + id,newItem, function(err, res, body) {
+		this.state.json_client.post(this.state.nav + '/launch/' + id,{}, function(err, res, body) {
 			return console.log(res.statusCode)
 		})
 
 	}
+
+	stopButton(id) {
+		console.log("stopButton")
+
+		//MAKE JSON POST REQUEST
+		this.state.json_client.post(this.state.nav + '/stop/' + id,{}, function(err, res, body) {
+			return console.log(res.statusCode)
+		})
+	}
+
 	getStoreValue(nav) {
 		if (nav === 'containers') {
 			return ContainersStore.getState().containers
