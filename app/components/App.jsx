@@ -304,6 +304,7 @@ export default class App extends React.Component {
 				    "exposed_ports":"0000",
         			"docker_image": "docker-image",
         			"dependencies":"",
+        			"env_variables":"",
         			"is_enabled":true
         		}
 			)
